@@ -14,8 +14,8 @@ LICENSE_EXPIRATION_DELTA = timedelta(days=90)
 class ChoiceEnum(enum.Enum):
     """Enum for choices in a choices field"""
     @classmethod
-    def get_choices(cls) -> List[Tuple[str, int]]:
-        return [(a.name, a.value) for a in cls]
+    def get_choices(cls) -> List[Tuple[int, str]]:
+        return [(a.value, a.name) for a in cls]
 
 
 class Package(ChoiceEnum):

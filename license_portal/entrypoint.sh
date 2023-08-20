@@ -1,0 +1,9 @@
+#!/bin/bash
+/wait
+echo "** Starting Container"
+
+python manage.py makemigrations --noinput &&
+python manage.py migrate &&
+python manage.py runserver 0.0.0.0:8080
+
+echo "** Closing Container"

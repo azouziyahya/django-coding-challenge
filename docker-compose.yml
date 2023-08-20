@@ -1,15 +1,20 @@
+version: '3.3'
 services:
   license-server:
     build:
       context: ./license_portal
-    links:
+    depends_on:
       - postgres
     volumes:
       - ./license_portal:/app
+    ports:
+      - "8080:8080"
 
   postgres:
     image: 'postgres:13'
     environment:
-     POSTGRES_USER: 'licenses'
-     POSTGRES_PASSWORD: 'licenses'
-     POSTGRES_DB: 'licenses'
+      POSTGRES_USER: 'licenses'
+      POSTGRES_PASSWORD: 'licenses'
+      POSTGRES_DB: 'licenses'
+    volumes:
+      - .db/:/var/lib/postgresql/data
